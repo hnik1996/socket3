@@ -3,6 +3,9 @@ import ir.ebcom.websocket.ws.model.UserSession;
 import ir.ebcom.websocket.ws.service.impl.StaticService;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
@@ -10,6 +13,9 @@ import java.io.IOException;
 @Slf4j
 @ServerEndpoint("/ws")
 public class SocketEndpoint {
+
+    @Autowired
+    private RedisTemplate<String, String> template;
 
     @OnOpen
     public void onOpen(Session session) {
