@@ -1,0 +1,33 @@
+{
+  "properties": [
+    {
+      "name": "ss.redis.hostname",
+      "type": "java.lang.String",
+      "description": "jedis hostname."
+    },
+    {
+      "name": "ws.redis.port",
+      "type": "java.lang.Integer",
+      "description": "jedis port."
+    },
+    {
+      "name": "ws.redis.password",
+      "type": "java.lang.String",
+      "description": "jedis password."
+    },
+    {
+      "name": "ws.redis.timeout",
+      "type": "java.lang.Integer",
+      "description": "jedis timeout."
+    },
+    {
+      "name": "ws.redis.database",
+      "type": "java.lang.Integer",
+      "description": "jedis database."
+    },
+    {
+      "name": "ws.redis.ssl",
+      "type": "java.lang.Boolean",
+      "description": "jedis ssl."
+    }
+  ] }

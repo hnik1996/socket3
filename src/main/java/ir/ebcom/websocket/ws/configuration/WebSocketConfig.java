@@ -1,12 +1,11 @@
 package ir.ebcom.websocket.ws.configuration;
 
 import ir.ebcom.websocket.ws.controller.SocketEndpoint;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.task.TaskSchedulerBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
-import org.springframework.session.web.http.CookieSerializer;
-import org.springframework.session.web.http.DefaultCookieSerializer;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
@@ -33,16 +32,14 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
 
     @Bean
-    public SocketEndpoint socketEndpoint(){
+    public SocketEndpoint socketEndpoint() {
         return new SocketEndpoint();
     }
 
     @Bean
-    public CookieSerializer cookieSerializer() {
-        DefaultCookieSerializer serializer = new DefaultCookieSerializer();
-        serializer.setCookieName("SESSIONID");
-        serializer.setCookiePath("/");
-        serializer.setDomainNamePattern("^.+?\\.(\\w+\\.[a-z]+)$");
-        return serializer;
+    public ServletServerContainerFactoryBean createWebSocketContainer() {
+        ServletServerContainerFactoryBean container = new ServletServerContainerFactoryBean();
+//        container.setMaxSessionIdleTimeout(5000L);
+        return container;
     }
 }

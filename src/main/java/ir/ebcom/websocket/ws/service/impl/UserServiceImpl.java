@@ -18,22 +18,21 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    public void addSession(UserSession userSession) {
-        userRepository.save(userSession);
-        System.out.println("*****************" + userSession.getSession().getId() + "*******************");
+    public void addUserSession(UserSession userSession) {
+        userRepository.saveUserSession(userSession);
     }
 
-    public void removeSession(String userId) {
-        userRepository.delete(userId);
+    public void deleteUserSession(String userId) {
+        userRepository.deleteUserSession(userId);
     }
 
-    public UserSession getSession(String userId) {
-        return userRepository.find(userId);
+    public UserSession getUserSession(String userId) {
+        return userRepository.findUserSession(userId);
     }
 
     @Override
-    public Map<String, UserSession> getActiveUsers() {
-        return null;
+    public Map<String, UserSession> getUserSessions() {
+        return userRepository.findAllUserSessions();
     }
 
 }
